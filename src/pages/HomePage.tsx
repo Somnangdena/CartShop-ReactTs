@@ -1,7 +1,10 @@
+import Product from "../components/Product";
 
 const HomePage = () => {
   return (
-    <div>HomePage</div>
+    <main className="container mx-auto ">
+       <Product/>
+    </main>
   )
 }
 
