@@ -36,7 +36,7 @@ const Footer = () => {
               <div className="flex gap-3 mt-6">
                 <a
                   aria-label="Facebook"
-                  className="inline-flex items-center justify-center gap-2 whitespace-nowrap text-sm font-medium focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50  rounded-full bg-muted hover:bg-primary hover:text-primary-foreground transition-colors"
+                  className="inline-flex items-center justify-center gap-2 whitespace-nowrap text-sm font-medium focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50 h-10 w-10  rounded-full bg-muted hover:bg-primary hover:text-primary-foreground transition-colors"
                   href="#">
                   <FaFacebookF className="size-4" />
                 </a>
@@ -172,7 +172,7 @@ const Footer = () => {
               <ul className="space-y-3">
                 <li>
                   <Link
-                   className="text-sm text-muted-foreground hover:text-foreground transition-colors inline-block"
+                    className="text-sm text-muted-foreground hover:text-foreground transition-colors inline-block"
                     to="/">
                     Privacy Policy
                   </Link>
@@ -186,7 +186,7 @@ const Footer = () => {
                 </li>
                 <li>
                   <Link
-                 className="text-sm text-muted-foreground hover:text-foreground transition-colors inline-block"
+                    className="text-sm text-muted-foreground hover:text-foreground transition-colors inline-block"
                     to="/">
                     Cookie Policy
                   </Link>

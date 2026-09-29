@@ -1,21 +1,41 @@
-import React, { createContext, useState, useEffect } from "react";
+import { createContext, useEffect, useState, type ReactNode } from "react";
 
-// create context
+export interface Product {
+  id: number;
+  title: string;
+  price: number;
+  description: string;
+  category: string;
+  images: string;
+}
 
-export const ProductContext = createContext<any>(null);
+interface ProductContextType {
+  products: Product[];
+}
 
-const ProductProvider = ({ children }: {children: React.ReactNode} ) => {
-  const [products, setProducts] = useState([]);
+export const ProductContext = createContext<ProductContextType>({
+  products: [],
+});
+
+interface ProductProviderProps {
+  children: ReactNode;
+}
+
+export const ProductProvider = ({ children }: ProductProviderProps) => {
+  const [products, setProducts] = useState<Product[]>([]);
 
   useEffect(() => {
     const fetchProducts = async () => {
-      const respone = await fetch("https://fakestoreapi.com/products");
+      const respone = await fetch("https://dummyjson.com/products?limit=0");
       const data = await respone.json();
-      setProducts(data)
+      setProducts(data.products)
     };
     fetchProducts();
   }, []);
-  return <ProductContext.Provider value={{ products }}>{children}</ProductContext.Provider>;
-};
 
-export default ProductProvider;
+  return (
+    <ProductContext.Provider value={{ products }}>
+      {children}
+    </ProductContext.Provider>
+  );
+};

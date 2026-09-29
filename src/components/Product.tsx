@@ -1,13 +1,36 @@
-const Product = () => {
-  return (
-    <section>
-      <img
-        src="https://images.unsplash.com/photo-1579338559194-a162d19bf842?q=80&w=687&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-        alt=""
-      />
-      <p>AirFlex Runner</p>
-      <p>$89.00</p>
-      <button>Add to Cart</button>
+import type {Product as ProductType} from "../contexts/ProductContext"
+import {  useCart } from "../contexts/CartContext";
+import { Link } from "react-router-dom";
+interface ProductProps {
+  product: ProductType;
+}
+const Product = ({product}: ProductProps) => {
+  const {addToCart} = useCart();
+  
+ return (
+    <section className="rounded-lg border bg-white p-4 shadow-sm">
+      <div className="aspect-square cursor-pointer">
+        <Link to={`/products/${product.id}`}>
+        <img
+          height={400}
+          width={400}
+          src= {product.images[0]}
+          alt= {product.title}
+          className="w-full h-full rounded-md object-cover"
+        />
+        </Link>
+      </div>
+
+      <div className="mt-4 flex flex-col">
+        <p className="text-lg font-semibold">{product.title}</p>
+        <p className="mt-1 text-gray-600">${product.price}</p>
+
+        <button 
+        onClick={() => addToCart(product)}
+        className="mt-4 w-full rounded-md self-end bg-primary px-4 py-2 text-white hover:bg-primary/70 cursor-pointer">
+          Add to Cart
+        </button>
+      </div>
     </section>
   );
 };
